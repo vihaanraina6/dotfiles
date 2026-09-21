@@ -12,6 +12,8 @@ brew "bat"
 brew "cmake"
 # CLI tool for Dolby Vision metadata on video streams
 brew "dovi_tool"
+# TUI system resource monitor
+brew "btop"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C

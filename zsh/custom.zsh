@@ -5,6 +5,10 @@ if type brew &>/dev/null; then
   [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+# add atuin, zoxide, ripgrep, bat, fd
+# check out lazygit and yazi and tealdeer
+# check out just, as a replacement for make
+
 # fzf
 command -v fzf &>/dev/null && source <(fzf --zsh)
 
