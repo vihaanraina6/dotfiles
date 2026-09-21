@@ -1,0 +1,10 @@
+# --- Appearance ---
+font-family = "JetBrains Mono"
+font-size = 12
+
+# --- Transparency & Blur ---
+background-opacity = 0.6
+background-blur = true
+
+# --- Window UI & Padding ---
+window-decoration = false

@@ -1,0 +1,148 @@
+tap "anomalyco/tap"
+tap "barutsrb/tap", "https://github.com/BarutSRB/homebrew-tap", trusted: { casks: ["omniwm"] }
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
+tap "lab421/tap"
+tap "nikitabobko/tap"
+tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch"
+# Core application library for C
+brew "glib"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Cross-platform make
+brew "cmake"
+# CLI tool for Dolby Vision metadata on video streams
+brew "dovi_tool"
+# Modern, maintained replacement for ls
+brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Free lossless audio codec
+brew "flac"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# Post-modern modal text editor
+brew "helix"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Powerful, lightweight programming language
+brew "lua"
+# Graphical client for the Soulseek peer-to-peer network
+brew "nicotine-plus"
+# Port scanning utility for large networks
+brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Internet file retriever
+brew "wget"
+# Network analyzer and capture tool - without graphical user interface
+brew "wireshark"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# Not so boring notch That Rocks
+cask "theboredteam/boring-notch/boring-notch", trusted: true
+# File-automation app that watches folders and runs rules
+cask "lab421/tap/forel", trusted: true
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Open-source video transcoder
+cask "handbrake-app"
+# Chromium-based web browser
+cask "helium-browser"
+# Free and open-source media player
+cask "iina"
+# Communicate with your handheld devices
+cask "kde-connect"
+# File archiver
+cask "keka"
+# Open-source keystroke visualiser
+cask "keycastr"
+# Discover, download, and run local LLMs
+cask "lm-studio"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Controls and monitors all fans on Apple computers
+cask "macs-fan-control"
+# Scan and remove malware, spyware, and viruses
+cask "malwarebytes"
+# Display technical and tag data for video and audio files
+cask "mediainfo"
+# GUI including a set of tools to create, alter and inspect Matroska files (MKV)
+cask "mkvtoolnix-app"
+# Deep clean, analyze, and optimize app
+cask "mole-app"
+# Tiling window manager
+cask "omniwm"
+# Document editor
+cask "onlyoffice"
+# Verify system files structure, run miscellaneous maintenance and more
+cask "onyx"
+# Replacement for Docker Desktop
+cask "orbstack"
+# Utility to uninstall apps and remove leftover files from old/uninstalled apps
+cask "pearcleaner"
+# VPN client focusing on security
+cask "protonvpn"
+# Control your tools with a few keystrokes
+cask "raycast"
+# File sharing network
+cask "soulseek"
+# System monitor for the menu bar
+cask "stats"
+# Menu bar manager
+cask "thaw"
+# Open-source BitTorrent client
+cask "transmission"
+# Virtual machines UI using QEMU
+cask "utm"
+# Network protocol analyzer
+cask "wireshark-app"
+# Multiplayer code editor
+cask "zed"
+# Gecko based web browser
+cask "zen"
+# Mono Nerd Font
+cask "font-jetbrains-mono-nerd-font"

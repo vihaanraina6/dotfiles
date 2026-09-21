@@ -1,0 +1,19 @@
+[user]
+	name = vihaanraina6
+	email = 305062048+vihaanraina6@users.noreply.github.com
+	signingkey = ~/.ssh/id_ed25519_signing.pub
+[init]
+	defaultBranch = main
+[tag]
+	gpgsign = true
+[commit]
+	gpgsign = true
+	verbose = true
+[gpg]
+	format = ssh
+[core]
+	editor = zed --wait
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[push]
+	autoSetupRemote = true

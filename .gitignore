@@ -1,0 +1,14 @@
+# MacOS Junk
+.DS_Store
+
+# Caches & Temp Files
+node-compile-cache/
+*.mdb
+*.log
+*.local
+*.local.*
+local.*
+
+gh/hosts.yml
+raycast/*
+!raycast/.gitkeep

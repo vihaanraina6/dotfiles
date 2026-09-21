@@ -1,0 +1,7 @@
+/nix/
+/System/
+/Library/
+/private/
+/usr/
+**/Library/*
+**/*.photoslibrary/
