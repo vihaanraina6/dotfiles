@@ -36,6 +36,9 @@ Ensure you are running this on a macOS environment. The installation script will
 4.  **Follow the prompts:** 
     The script will interactively ask if you want to install applications (via Homebrew) and whether you want to overwrite existing dotfiles before symlinking.
 
+<img src="assets/ss1.png">
+<img src="assets/ss2.png">
+
 ## Repository Structure
 
 *   `install.sh`: The master execution script that runs all sub-scripts in the correct order.
