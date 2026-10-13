@@ -15,26 +15,28 @@
     "sort_order": "default"
   },
   "outline_panel": {
-    "dock": "right",
+    "dock": "right"
   },
   "collaboration_panel": {
-    "dock": "right",
+    "dock": "right"
   },
   "git_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "auto_update": false,
   "helix_mode": false,
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "icon_theme": "Material Icon Theme",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
     "mode": "dark",
-    "light": "One Light",
-    "dark": "Transparent Prism",
-  },
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  }
 }

@@ -43,8 +43,9 @@ take() {
 
 irepo() {
   if [ -z "${1:-}" ]; then
-    echo "Usage: irepo <output_file>"
+    echo "Usage: irepo <output_file> [dir]"
     return 1
   fi
-  npx -y repomix --ignore ".git,node_modules,dist,package-lock.json,database,.zed,LICENSE" --stdout > "$1"
+  (cd "${2:-.}" && bunx repomix \
+    --ignore ".git,node_modules,dist,package-lock.json,.zed,LICENSE" --stdout) > "$1"
 }

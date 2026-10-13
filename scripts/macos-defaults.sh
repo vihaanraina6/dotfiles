@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$SCRIPT_DIR/utils.sh"
 
 apply_osx_system_defaults() {
-    info "Applying OSX system defaults..."
+    info "Applying MacOS system defaults..."
 
     # --- Trackpad ---
     # Disable three finger drag

@@ -3,23 +3,46 @@ monitorDwindleOverrides = []
 monitorGapOverrides = []
 monitorNiriOverrides = []
 monitorOrientationOverrides = []
-schemaVersion = 3
+schemaVersion = 4
 
 [appearance]
 mode = "automatic"
+tabRailAppIcons = false
 
 [borders]
 enabled = false
-width = 5.0
+width = 3.0
 
 [borders.color]
 alpha = 1.0
-blue = 0.979300037944676
+blue = 1.0
 green = 1.0
-red = 0.08458520228437894
+red = 1.0
+
+[borders.glow]
+enabled = false
+opacity = 0.6
+radius = 8.0
+
+[borders.gradient]
+direction = "topLeftToBottomRight"
+enabled = false
+
+[borders.gradient.end]
+alpha = 1.0
+blue = 0.7
+green = 1.0
+red = 0.0
+
+[borders.gradient.start]
+alpha = 1.0
+blue = 1.0
+green = 0.4
+red = 0.0
 
 [clipboard]
 historyEnabled = false
+ignoredTypes = []
 maxItemBytes = 8388608
 maxItems = 200
 maxTotalBytes = 67108864
@@ -43,7 +66,7 @@ raiseOnMouseFocus = false
 
 [gaps]
 fullscreenUsesOuterGaps = true
-size = 11.0
+size = 10.0
 
 [gaps.outer]
 bottom = 0.0
@@ -52,6 +75,7 @@ right = 0.0
 top = 0.0
 
 [general]
+animationSpeed = 1.0
 animationsEnabled = true
 defaultLayoutType = "niri"
 hotkeysEnabled = true
@@ -66,10 +90,17 @@ fingerCount = 3
 invertDirection = false
 mouseMoveModifierKey = "option"
 mouseResizeModifierKey = "option"
+overviewGestureEnabled = true
+overviewGestureFingerCount = 4
 scrollEnabled = true
 scrollModifierKey = "optionShift"
-scrollSensitivity = 5.0
+scrollSensitivity = 4.3
 trackpadScrollStyle = "snap"
+windowGestureSensitivity = 1.0
+windowMoveEnabled = false
+windowMoveFingerCount = 4
+windowResizeEnabled = false
+windowResizeFingerCount = 3
 workspaceSwipeAxis = "vertical"
 workspaceSwipeEnabled = true
 workspaceSwipeFingerCount = 3
@@ -89,49 +120,55 @@ alwaysCenterSingleColumn = true
 centerFocusedColumn = "never"
 containerPrimarySpanPresets = [1.0, 0.5]
 defaultContainerPrimarySpan = 1.0
+edgeGaps = true
 infiniteLoop = false
+resizeStepPercent = 5
 singleWindowFit = "container_primary_span"
 visibleContainerCount = 2
 
 [overview]
+enabled = true
+invertScrollDirection = false
+matchFocusBorder = true
+mouseScrollSpeed = 1.0
 zoom = 1.0
 
 [overview.backdrop]
 alpha = 1.0
-blue = 0.08
-green = 0.05
-red = 0.05
+blue = 0.09402624517679214
+green = 0.09402624517679214
+red = 0.09402624517679214
 
 [overview.windowBorders]
 
 [overview.windowBorders.hovered]
 alpha = 1.0
 blue = 1.0
-green = 0.6
-red = 0.4
+green = 1.0
+red = 1.0
 
 [overview.windowBorders.normal]
 alpha = 0.5
-blue = 0.35
-green = 0.3
-red = 0.3
+blue = 1.0
+green = 1.0
+red = 1.0
 
 [overview.windowBorders.selected]
 alpha = 1.0
-blue = 0.4
-green = 0.8
-red = 0.3
+blue = 1.0
+green = 1.0
+red = 1.0
 
 [quakeTerminal]
-animationDuration = 0.2
+animationDuration = 0.0
 autoHide = true
 backgroundBlurRadius = 10
-backgroundEffect = "glassClear"
+backgroundEffect = "glassRegular"
 enabled = true
 heightPercent = 50.0
 monitorMode = "focusedWindow"
 opacity = 0.1
-position = "left"
+position = "top"
 widthPercent = 50.0
 
 [routing]
@@ -144,31 +181,76 @@ mode = "macOS"
 
 [statusBar]
 showAppNames = false
+showIcon = true
 showWorkspaceName = true
 useWorkspaceId = true
 
 [workspaceBar]
-backgroundOpacity = 0.1
+autoHide = false
+autoHideHideDelayMilliseconds = 0.0
+autoHideRevealDelayMilliseconds = 0.0
+backgroundOpacity = 0.0
 deduplicateAppIcons = false
-enabled = false
-excludedBundleIDs = []
-height = 24.0
-hideEmptyWorkspaces = false
-hideInNativeFullscreen = false
+enabled = true
+excludedBundleIDs = ["com.apple.systempreferences", "com.barut.OmniWM"]
+height = 36.0
+hideEmptyWorkspaces = true
+hideInNativeFullscreen = true
+hoverPreviewsEnabled = false
+inactiveIconOpacity = 1.0
 notchActiveZoneWidth = 180.0
-notchMode = "moveBelowMenuBar"
+notchMode = "fillLeftOfNotch"
+notificationBadgeRefreshIntervalSeconds = 5.0
+notificationBadges = "off"
 position = "overlappingMenuBar"
 reserveLayoutSpace = false
 revealHoldMilliseconds = 200.0
 revealModifier = "off"
-showFloatingWindows = false
+showAccentHighlights = false
+showFloatingWindows = true
+showItemBackgrounds = true
 showLabels = true
+solidBlackBackground = false
 systemStatsButton = false
-windowLevel = "popup"
+transparentBackground = true
+windowLevel = "screensaver"
 xOffset = 0.0
 yOffset = 0.0
 
 [workspaceBar.iconOverrides]
+
+[workspaceBar.textColor]
+alpha = 1.0
+blue = 1.0
+green = 1.0
+red = 1.0
+
+[[appRules]]
+assignToWorkspace = "1"
+bundleId = "app.zen-browser.zen"
+id = "1CF39647-F30D-4E76-9686-79B551F1B094"
+minHeight = 495.0
+minWidth = 500.0
+
+[[appRules]]
+assignToWorkspace = "2"
+bundleId = "dev.zed.Zed"
+id = "979F05F4-FFA2-4EDD-B23F-08A9944C759F"
+minHeight = 240.0
+minWidth = 360.0
+
+[[appRules]]
+assignToWorkspace = "3"
+bundleId = "com.mitchellh.ghostty"
+id = "7876C9EF-437E-4D4F-9C27-B1B02F4AABCE"
+minHeight = 48.0
+minWidth = 90.0
+
+[[appRules]]
+bundleId = "com.hnc.Discord"
+id = "AF752D95-8497-4844-BE20-4C93E73BAEF2"
+minHeight = 500.0
+minWidth = 800.0
 
 [[appRules]]
 bundleId = "com.openai.codex"
@@ -189,22 +271,10 @@ minHeight = 375.0
 minWidth = 500.0
 
 [[appRules]]
-bundleId = "dev.zed.Zed"
-id = "979F05F4-FFA2-4EDD-B23F-08A9944C759F"
-minHeight = 240.0
-minWidth = 360.0
-
-[[appRules]]
 bundleId = "com.apple.Safari"
 id = "81426D13-C1A5-475E-AFBC-00BBA05042D0"
 minHeight = 220.0
 minWidth = 574.0
-
-[[appRules]]
-bundleId = "app.zen-browser.zen"
-id = "1CF39647-F30D-4E76-9686-79B551F1B094"
-minHeight = 495.0
-minWidth = 500.0
 
 [[appRules]]
 bundleId = "org.mozilla.firefox"
@@ -223,18 +293,6 @@ bundleId = "com.spotify.client"
 id = "2DE9390B-0DB4-4D0C-9ABA-06F76F1D4EA9"
 minHeight = 600.0
 minWidth = 800.0
-
-[[appRules]]
-bundleId = "com.hnc.Discord"
-id = "AF752D95-8497-4844-BE20-4C93E73BAEF2"
-minHeight = 500.0
-minWidth = 800.0
-
-[[appRules]]
-bundleId = "com.mitchellh.ghostty"
-id = "7876C9EF-437E-4D4F-9C27-B1B02F4AABCE"
-minHeight = 48.0
-minWidth = 90.0
 
 [[appRules]]
 bundleId = "com.microsoft.Outlook"
@@ -477,11 +535,11 @@ binding = "Unassigned"
 id = "workspaceBackAndForth"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Hyper+Down Arrow"
 id = "switchWorkspace.next"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Hyper+Up Arrow"
 id = "switchWorkspace.previous"
 
 [[hotkeys]]
@@ -489,11 +547,11 @@ binding = "Hyper+Left Arrow"
 id = "focus.left"
 
 [[hotkeys]]
-binding = "Hyper+Down Arrow"
+binding = "Unassigned"
 id = "focus.down"
 
 [[hotkeys]]
-binding = "Hyper+Up Arrow"
+binding = "Unassigned"
 id = "focus.up"
 
 [[hotkeys]]
@@ -962,6 +1020,10 @@ id = "raiseAllFloatingWindows"
 
 [[hotkeys]]
 binding = "Unassigned"
+id = "toggleFloatingFocus"
+
+[[hotkeys]]
+binding = "Unassigned"
 id = "rescueOffscreenWindows"
 
 [[hotkeys]]
@@ -978,6 +1040,14 @@ id = "openMenuAnywhere"
 
 [[hotkeys]]
 binding = "Unassigned"
+id = "setWindowMark"
+
+[[hotkeys]]
+binding = "Unassigned"
+id = "removeWindowMark"
+
+[[hotkeys]]
+binding = "Hyper+Z"
 id = "toggleWorkspaceBarVisibility"
 
 [[hotkeys]]

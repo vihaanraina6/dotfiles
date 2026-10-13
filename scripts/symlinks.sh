@@ -69,6 +69,10 @@ create_symlinks() {
 delete_symlinks() {
     info "Deleting symbolic links..."
 
+    # Real files/dirs are never deleted: with --include-files they are moved here instead,
+    # keeping their path relative to $HOME, so nothing is lost if you overwrote something by mistake.
+    local backup_root="${BACKUP_DIR:-$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)}"
+
     while IFS=: read -r source target || [ -n "$target" ]; do
 
         # Skip empty or commented-out lines
@@ -79,22 +83,63 @@ delete_symlinks() {
         # Evaluate variables
         target=$(eval echo "$target")
 
-        # Check if the symbolic link, file, or directory exists. [-e], not
-        # [-f]: a real directory an app created at $target (e.g. Zed making
-        # ~/.config/zed on first launch) needs to be caught here too, or
-        # create_symlinks' `ln -s` will nest the link inside it instead of
-        # replacing it.
-        if [ -L "$target" ] || { [ "${include_files:-false}" == true ] && [ -e "$target" ]; }; then
-            # Remove the symbolic link or file
-            if rm -rf "$target"; then
-                success "Deleted: $target"
+        if [ -L "$target" ]; then
+            # A symlink: unlink it. Plain `rm` (no -r, no -f) cannot remove a real directory,
+            # so this can never touch the data behind the link.
+            if rm "$target"; then
+                success "Removed link: $target"
             else
-                error "Failed to delete: $target"
+                error "Failed to remove link: $target"
+            fi
+        elif [ "${include_files:-false}" == true ] && [ -e "$target" ]; then
+            # [-e], not [-f]: a real directory an app created at $target (e.g. Zed making
+            # ~/.config/zed on first launch) must be moved out of the way too, or
+            # create_symlinks' `ln -s` would nest the link inside it.
+            local dest="$backup_root/${target#"$HOME"/}"
+            if mkdir -p "$(dirname "$dest")" && mv "$target" "$dest"; then
+                success "Moved to backup: $target -> $dest"
+            else
+                error "Failed to back up: $target"
             fi
         else
             warning "Not found: $target"
         fi
     done <"$CONFIG_FILE"
+}
+
+check_symlinks() {
+    info "Checking symbolic links..."
+    local bad=0
+
+    while IFS=: read -r source target || [ -n "$source" ]; do
+        if [[ -z "$source" || -z "$target" || "$source" == \#* ]]; then
+            continue
+        fi
+        source=$(eval echo "$source")
+        target=$(eval echo "$target")
+
+        if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+            success "OK: $target"
+        elif [ -L "$target" ]; then
+            warning "Points elsewhere: $target -> $(readlink "$target")"
+            bad=1
+        elif [ -e "$target" ]; then
+            # Typical cause: an installer rewrote the file and replaced the link.
+            warning "Replaced by a real file/dir: $target   (compare: diff -r \"$target\" \"$source\")"
+            bad=1
+        else
+            warning "Missing: $target"
+            bad=1
+        fi
+    done <"$CONFIG_FILE"
+
+    if [ "$bad" = 0 ]; then
+        success "All links intact."
+    else
+        warning "Merge anything you want to keep into the repo, quit the apps involved, then run:"
+        warning "  $0 --delete --include-files && $0 --create"
+        return 1
+    fi
 }
 
 # Parse arguments
@@ -109,14 +154,17 @@ if [ "$(basename "$0")" = "$(basename "${BASH_SOURCE[0]}")" ]; then
         fi
         delete_symlinks
         ;;
+    "--check")
+        check_symlinks
+        ;;
     "--help")
         # Display usage/help message
-        echo "Usage: $0 [--create | --delete [--include-files] | --help]"
+        echo "Usage: $0 [--create | --check | --delete [--include-files] | --help]"
         ;;
     *)
         # Display an error message for unknown arguments
         error "Error: Unknown argument '${1:-}'"
-        error "Usage: $0 [--create | --delete [--include-files] | --help]"
+        error "Usage: $0 [--create | --check | --delete [--include-files] | --help]"
         exit 1
         ;;
     esac
