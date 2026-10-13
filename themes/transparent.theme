@@ -1,0 +1,6 @@
+LABEL="transparent"
+APPEARANCE=dark
+# No GHOSTTY_THEME on purpose: Ghostty falls back to its built-in default colours.
+ZED_THEME="Transparent Prism"
+ACCENT="ffffff"
+WALLPAPERS=("$DOTFILES_DIR/wallpapers/static/mechanikos-01.jpg")

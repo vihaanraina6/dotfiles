@@ -9,7 +9,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$ROOT_DIR/scripts/utils.sh"
 . "$ROOT_DIR/scripts/prerequisites.sh"
 . "$ROOT_DIR/scripts/brew-install.sh"
-. "$ROOT_DIR/scripts/osx-defaults.sh"
+. "$ROOT_DIR/scripts/macos-defaults.sh"
 . "$ROOT_DIR/scripts/symlinks.sh"
 
 printf "%s" "$blue"
@@ -49,7 +49,7 @@ info "===================="
 info "OSX System Defaults"
 info "===================="
 
-apply_osx_system_defaults
+apply_macos_system_defaults
 
 printf "\n"
 info "===================="
@@ -70,5 +70,12 @@ if [[ "$overwrite_dotfiles" == "y" ]]; then
     delete_symlinks
 fi
 create_symlinks
+
+printf "\n"
+info "===================="
+info "Theme"
+info "===================="
+
+"$HOME/.local/bin/theme" restore || warning "Could not apply a theme; run 'theme' later"
 
 success "Dotfiles set up successfully."

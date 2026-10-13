@@ -1,0 +1,6 @@
+LABEL="Catppuccin Latte"
+APPEARANCE=light
+GHOSTTY_THEME="Catppuccin Latte"
+ZED_THEME="Catppuccin Latte"
+ACCENT="8839ef"                  # Mauve (Latte)
+WALLPAPERS=("$DOTFILES_DIR/wallpapers/static/mechanikos-02.jpg")
