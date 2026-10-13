@@ -14,6 +14,21 @@ CONFIG_FILE="$SCRIPT_DIR/../symlinks.conf"
 
 . "$SCRIPT_DIR/utils.sh"
 
+# Expand the handful of variables symlinks.conf is allowed to use, WITHOUT eval.
+# `eval echo` would run any $(...) or backtick in the file; this only substitutes
+# $REPO_DIR, $HOME (also in ${...} form) and a leading ~/.
+expand_path() {
+    local p="$1"
+    p="${p//\$\{REPO_DIR\}/$REPO_DIR}"
+    p="${p//\$REPO_DIR/$REPO_DIR}"
+    p="${p//\$\{HOME\}/$HOME}"
+    p="${p//\$HOME/$HOME}"
+    case "$p" in
+    "~/"*) p="$HOME/${p#\~/}" ;;
+    esac
+    printf '%s' "$p"
+}
+
 # Check if configuration file exists
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Configuration file not found: $CONFIG_FILE"
@@ -32,8 +47,8 @@ create_symlinks() {
         fi
 
         # Evaluate variables
-        source=$(eval echo "$source")
-        target=$(eval echo "$target")
+        source="$(expand_path "$source")"
+        target="$(expand_path "$target")"
 
         # Check if the source file exists
         if [ ! -e "$source" ]; then
@@ -81,7 +96,7 @@ delete_symlinks() {
         fi
 
         # Evaluate variables
-        target=$(eval echo "$target")
+        target="$(expand_path "$target")"
 
         if [ -L "$target" ]; then
             # A symlink: unlink it. Plain `rm` (no -r, no -f) cannot remove a real directory,
@@ -115,8 +130,8 @@ check_symlinks() {
         if [[ -z "$source" || -z "$target" || "$source" == \#* ]]; then
             continue
         fi
-        source=$(eval echo "$source")
-        target=$(eval echo "$target")
+        source="$(expand_path "$source")"
+        target="$(expand_path "$target")"
 
         if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
             success "OK: $target"

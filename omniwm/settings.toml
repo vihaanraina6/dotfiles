@@ -247,6 +247,11 @@ minHeight = 48.0
 minWidth = 90.0
 
 [[appRules]]
+assignToWorkspace = "4"
+bundleId = "com.apple.finder"
+id = "36E4B9FC-CBC2-4927-9975-49CB96801738"
+
+[[appRules]]
 bundleId = "com.hnc.Discord"
 id = "AF752D95-8497-4844-BE20-4C93E73BAEF2"
 minHeight = 500.0

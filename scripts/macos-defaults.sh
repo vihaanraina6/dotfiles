@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 . "$SCRIPT_DIR/utils.sh"
 
-apply_osx_system_defaults() {
+apply_macos_system_defaults() {
     info "Applying MacOS system defaults..."
 
     # --- Trackpad ---
@@ -63,5 +63,5 @@ apply_osx_system_defaults() {
 }
 
 if [ "$(basename "$0")" = "$(basename "${BASH_SOURCE[0]}")" ]; then
-    apply_osx_system_defaults
+    apply_macos_system_defaults
 fi

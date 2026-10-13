@@ -46,7 +46,7 @@ fi
 
 printf "\n"
 info "===================="
-info "OSX System Defaults"
+info "MacOS System Defaults"
 info "===================="
 
 apply_macos_system_defaults
@@ -58,6 +58,15 @@ info "===================="
 
 info "Adding .hushlogin file to suppress 'last login' message in terminal..."
 touch ~/.hushlogin
+
+printf "\n"
+info "===================="
+info "Git filters"
+info "===================="
+
+# Keeps `theme` runs from dirtying zed/settings.json in git (see scripts/zed-theme-clean.sh).
+git -C "$ROOT_DIR" config --local filter.zed-theme.clean "scripts/zed-theme-clean.sh"
+success "Registered zed-theme git filter."
 
 printf "\n"
 info "===================="

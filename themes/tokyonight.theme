@@ -3,4 +3,4 @@ APPEARANCE=dark
 GHOSTTY_THEME="TokyoNight"
 ZED_THEME="Tokyo Night"
 ACCENT="7aa2f7"                  # Blue
-#WALLPAPERS=("$DOTFILES_DIR/wallpapers/static/4.jpg")
+WALLPAPERS=("$DOTFILES_DIR/wallpapers/static/4.jpg")

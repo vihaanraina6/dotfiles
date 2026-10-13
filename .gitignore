@@ -8,6 +8,7 @@ node-compile-cache/
 *.local
 *.local.*
 local.*
+wallpapers
 
 gh/hosts.yml
 raycast/*

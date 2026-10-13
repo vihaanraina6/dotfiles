@@ -28,7 +28,7 @@ export DOTFILES_DIR
 THEMES_DIR="$DOTFILES_DIR/themes"
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/theme"
 CFG="$HOME/.config"
-DEFAULT_THEME="white"
+DEFAULT_THEME="transparent"
 
 GHOSTTY_DIR="$CFG/ghostty"
 ZED_CONF="$CFG/zed/settings.json"
@@ -65,10 +65,28 @@ list_themes() {
 
 current_theme() { cat "$STATE_DIR/current" 2>/dev/null || true; }
 
+# Theme files are sourced as shell, so refuse anything but plain KEY="value" lines and one
+# WALLPAPERS=(...) list of quoted paths. This rejects $(...), backticks, `;`, `|`, extra
+# commands and so on, so a theme file copied from somewhere else can't run code.
+validate_theme_file() {
+  local bad
+  bad="$(grep -Ev \
+    -e '^[[:space:]]*(#.*)?$' \
+    -e '^(LABEL|APPEARANCE|GHOSTTY_THEME|ZED_THEME|ACCENT|ACCENT_ALPHA)=("[^"$`\\]*"|[A-Za-z0-9._-]+)[[:space:]]*(#.*)?$' \
+    -e '^WALLPAPERS=[(]([[:space:]]*"([$]DOTFILES_DIR|[$]HOME)?/[^"$`\\]*")+[[:space:]]*[)][[:space:]]*(#.*)?$' \
+    "$1")" || true
+  if [ -n "$bad" ]; then
+    echo "$1: refusing to load, unexpected line(s):" >&2
+    printf '  %s\n' "$bad" >&2
+    return 1
+  fi
+}
+
 # Source a theme into the current shell, after clearing the previous one.
 load_theme() {
   local file="$THEMES_DIR/$1.theme"
   [ -f "$file" ] || { echo "Unknown theme: $1 (try: theme list)" >&2; return 1; }
+  validate_theme_file "$file" || return 1
   unset LABEL APPEARANCE GHOSTTY_THEME ZED_THEME ACCENT ACCENT_ALPHA
   WALLPAPERS=()
   # shellcheck disable=SC1090
