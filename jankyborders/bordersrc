@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# BORDER_COLOR is written by scripts/theme-switcher.sh into the state dir.
+THEME_ENV="${XDG_STATE_HOME:-$HOME/.local/state}/theme/env"
+[ -f "$THEME_ENV" ] && . "$THEME_ENV"
+
+options=(
+	style=round
+	width=7.0
+	hidpi=on
+	active_color="${BORDER_COLOR:-0xFFFFFFFF}"
+)
+
+borders "${options[@]}"
