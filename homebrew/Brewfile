@@ -1,19 +1,17 @@
 tap "anomalyco/tap"
-tap "barutsrb/tap", "https://github.com/BarutSRB/homebrew-tap", trusted: { casks: ["omniwm"] }
-tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: { formulae: ["borders", "sketchybar"] }
 tap "lab421/tap"
-tap "nikitabobko/tap"
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch"
-# Core application library for C
-brew "glib"
+# Record and share terminal sessions
+brew "asciinema"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
 # Cross-platform make
 brew "cmake"
-# CLI tool for Dolby Vision metadata on video streams
-brew "dovi_tool"
-# TUI system resource monitor
-brew "btop"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -22,6 +20,8 @@ brew "fastfetch"
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
 # Free lossless audio codec
 brew "flac"
 # Fast and simple Node.js version manager
@@ -46,10 +46,10 @@ brew "lua"
 brew "nicotine-plus"
 # Port scanning utility for large networks
 brew "nmap"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Pack a repository into a single AI-friendly file (used by the irepo shell function)
+brew "repomix"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Cross-shell prompt for astronauts
@@ -68,6 +68,8 @@ brew "wget"
 brew "wireshark"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -79,11 +81,12 @@ brew "anomalyco/tap/opencode", trusted: true
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar", trusted: true
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace", trusted: true
+brew "felixkratz/formulae/sketchybar"
 # Not so boring notch That Rocks
 cask "theboredteam/boring-notch/boring-notch", trusted: true
+# Native GUI for Homebrew casks
+cask "caskhub"
+cask "font-jetbrains-mono-nerd-font"
 # File-automation app that watches folders and runs rules
 cask "lab421/tap/forel", trusted: true
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -106,6 +109,8 @@ cask "lm-studio"
 cask "localsend"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# Archive manager
+cask "macpacker"
 # Controls and monitors all fans on Apple computers
 cask "macs-fan-control"
 # Scan and remove malware, spyware, and viruses
@@ -146,5 +151,6 @@ cask "wireshark-app"
 cask "zed"
 # Gecko based web browser
 cask "zen"
-# Mono Nerd Font
-cask "font-jetbrains-mono-nerd-font"
+cargo "artem"
+cargo "rustlings"
+npm "corepack"
