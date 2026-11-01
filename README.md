@@ -44,13 +44,12 @@ Ensure you are running this on a macOS environment. The installation script will
 *   `install.sh`: The master execution script that runs all sub-scripts in the correct order.
 *   `symlinks.conf`: A colon-separated configuration file mapping the source files in this repository to their target destinations on your local machine.
 *   `scripts/`: Contains the modular bash scripts that power the setup:
-    *   `prerequisites.sh`: Installs Xcode CLI tools and Homebrew.
-    *   `brew-install.sh`: Runs `brew bundle install` using the provided `Brewfile`.
-    *   `macos-defaults.sh`: Applies custom macOS system defaults (Trackpad, Finder, Dock, etc.).
-    *   `symlinks.sh`: Reads `symlinks.conf` to map configurations to your system. `--delete` only unlinks symlinks; with `--include-files`, real files are moved to `~/.dotfiles-backup/<timestamp>/`, never deleted.
-    *   `theme-switcher.sh`: Linked to `~/.local/bin/theme`. Switches Ghostty, Zed, JankyBorders, macOS appearance and wallpaper together.
-    *   `zed-theme-clean.sh`: Git clean filter that hides the live Zed theme from `git diff`/`git add`.
-    *   `utils.sh`: Provides global color and logging utilities (info, success, error, warning).
+*   `prerequisites.sh`: Installs Xcode CLI tools and Homebrew.
+*   `brew-install.sh`: Runs `brew bundle install` using the provided `Brewfile`.
+*   `macos-defaults.sh`: Applies custom macOS system defaults (Trackpad, Finder, Dock, etc.).
+*   `symlinks.sh`: Reads `symlinks.conf` to map configurations to your system. `--delete` only unlinks symlinks; with `--include-files`, real files are moved to `~/.dotfiles-backup/<timestamp>/`, never deleted.
+*   `theme-switcher.sh`: Linked to `~/.local/bin/theme`. Switches Ghostty, Zed, JankyBorders, macOS appearance and wallpaper together.
+*   `utils.sh`: Provides global color and logging utilities (info, success, error, warning).
 *   `homebrew/`: Contains the `Brewfile` defining all taps, brews, and casks.
 *   `themes/`: One `.theme` file per theme (Ghostty/Zed theme names, accent colour, wallpapers). Add a file here and `theme` picks it up.
 *   `wallpapers/`: Images referenced by the theme files.
@@ -67,16 +66,6 @@ theme wallpaper     # next wallpaper from the current theme's list
 ```
 
 Starship uses your terminal's own ANSI colours, so it follows whichever Ghostty theme is active. The `transparent` theme leaves Ghostty on its built-in defaults.
-
-## Git filter for Zed
-
-`theme` rewrites the `"theme"` block of `zed/settings.json` (it is symlinked into this repo). To keep
-that out of git, `.gitattributes` routes the file through `scripts/zed-theme-clean.sh`, and `install.sh`
-registers it. On a clone that was set up before this existed, register it once:
-
-```bash
-git config --local filter.zed-theme.clean scripts/zed-theme-clean.sh
-```
 
 ## Post-Installation
 
